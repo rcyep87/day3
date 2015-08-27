@@ -4,6 +4,10 @@
 # 4. search in @card array for "J", "Q", "K", "A"; where "J", "Q", "K" exist, swap out with
 #    value of 10; where "A" exist, swap out with value of 11
 # 5. have player and dealer draw their own unique pair of cards
+# 6. create game logic
+#  - if dealer card_value_total < 16, dealer must draw
+#  - card total for dealer and player cannot be > 21
+#  - if dealer or player immediately draws 21, dealer or player wins
 
 class Card
 
@@ -36,7 +40,12 @@ class Deck
       @card.push(Card.new(suit, "K"))
       @card.push(Card.new(suit, "A"))
     end
-    @card
+    # @card - trying to determine the suits and values in the deck after it is created
+    if @card == ("J" || "Q" || "K")
+      @card == 10
+    elsif @card == "A"
+      @card == 11
+    end
   end
 
   def draw
